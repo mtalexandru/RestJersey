@@ -21,8 +21,21 @@ public class ActivityResource {
 
     @POST
     @Path("activity")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+    public Activity createActivity(Activity activity){
+        System.out.println("Json transmitted desc: " + activity.getDescription());
+        System.out.println("Json transmitted dur: " + activity.getDuration());
+
+        activityRepository.create(activity);
+        return activity;
+    }
+
+
+    @POST
+    @Path("activity")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public Activity createActivityParams(MultivaluedMap<String,String> formParams){
         System.out.println(formParams.getFirst("description"));
         System.out.println(formParams.getFirst("duration"));
