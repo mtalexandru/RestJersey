@@ -47,4 +47,14 @@ public class Activity {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "id='" + id + '\'' +
+                ", user=" + user +
+                ", description='" + description + '\'' +
+                ", duration=" + duration +
+                '}';
+    }
 }

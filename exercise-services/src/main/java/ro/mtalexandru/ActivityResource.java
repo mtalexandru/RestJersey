@@ -5,11 +5,9 @@ import ro.mtalexandru.model.User;
 import ro.mtalexandru.repository.ActivityRepository;
 import ro.mtalexandru.repository.ActivityRepositoryStub;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import java.util.List;
 
 /**
@@ -19,6 +17,24 @@ import java.util.List;
 public class ActivityResource {
     
     private ActivityRepository activityRepository = new ActivityRepositoryStub();
+
+
+    @POST
+    @Path("activity")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Activity createActivityParams(MultivaluedMap<String,String> formParams){
+        System.out.println(formParams.getFirst("description"));
+        System.out.println(formParams.getFirst("duration"));
+
+        Activity activity = new Activity();
+        activity.setDescription(formParams.getFirst("description"));
+        activity.setDescription(formParams.getFirst("duration"));
+
+        activityRepository.create(activity);
+        return activity;
+    }
+
 
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})

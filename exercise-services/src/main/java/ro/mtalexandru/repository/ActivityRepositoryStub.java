@@ -44,4 +44,10 @@ public class ActivityRepositoryStub implements ActivityRepository {
 
         return activity1;
     }
+
+    @Override
+    public void create(Activity activity) {
+        //should issue an insert instruction to the DB
+        System.out.println("I have created a new activity: " + activity);
+    }
 }
