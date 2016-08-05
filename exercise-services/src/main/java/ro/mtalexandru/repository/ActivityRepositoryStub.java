@@ -1,6 +1,7 @@
 package ro.mtalexandru.repository;
 
 import ro.mtalexandru.model.Activity;
+import ro.mtalexandru.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,5 +27,21 @@ public class ActivityRepositoryStub implements ActivityRepository {
         activities.add(activity2);
 
         return activities;
+    }
+
+    @Override
+    public Activity findActivity(String activityId){
+        Activity activity1 = new Activity();
+        activity1.setDescription("Swimming");
+        activity1.setDuration(55);
+        activity1.setId("1234");
+
+        User user = new User();
+        user.setId("5678");
+        user.setName("Mau");
+
+        activity1.setUser(user);
+
+        return activity1;
     }
 }

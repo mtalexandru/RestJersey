@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * Created by Mau on 8/4/2016.
  */
-public interface ActivityRepository {
-    List<Activity> findAllActivities();
-    Activity findActivity(String activityId);
+public interface ValutaRepository {
+    List<Activity> findAllValute();
 }
